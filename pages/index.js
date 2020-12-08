@@ -1,47 +1,28 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import {getAllPosts} from "../lib/api";
+import Link from "next/link";
 
-export default function Home() {
+export default function Home({ allPosts }) {
+  const heroPost = allPosts[0];
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>stefanscript blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to stefanscript blog
-        </h1>
+        <h1 className={styles.title}>Welcome to stefanscript blog</h1>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <Link as={`/posts/${heroPost.slug}`} href="/posts/[slug]">
+          <a className={styles.card}>
+            <h3>{heroPost.title}</h3>
+            <p>{heroPost.excerpt}</p>
           </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          </Link>
         </div>
       </main>
 
@@ -57,4 +38,19 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "author",
+    "coverImage",
+    "excerpt",
+  ]);
+
+  return {
+    props: { allPosts },
+  };
 }
