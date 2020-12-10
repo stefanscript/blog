@@ -13,6 +13,7 @@
     "test-all": "npm run lint && npm run type-check && npm run test"
   },
   "dependencies": {
+    "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.3",
     "react": "17.0.1",
