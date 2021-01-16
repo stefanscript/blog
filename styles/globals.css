@@ -26,6 +26,13 @@ img {
   display: block;
 }
 
+p {
+  line-height: 1.6rem;
+}
 pre {
   background-color: #f3f3f3;
+  width: 100%;
+  overflow: scroll;
+  padding: .5rem;
+  font-size: 0.9rem;
 }
