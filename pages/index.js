@@ -12,8 +12,18 @@ export default function Home({ allPosts }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hey I&rsquo;m Stefan, a software engineer.</p>
-        <p>This is my blog with posts from my day to day experience.</p>
+        <p>
+          Hey I&rsquo;m Stefan, a software engineer. <br />I started exploring
+          the world of software at a young age. It was then when I discover you
+          can get more resources in games by tweaking a few files :D. O yes, I
+          thought, this is big.
+        </p>
+        <p>
+          Next, I started to build my own websites with games that had google
+          ads. It must have been 2000s, just before jQuery.
+        </p>
+          <p>It was this experience that got me my first junior developer job.</p>
+        <p>This is my blog with posts from my experience.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
