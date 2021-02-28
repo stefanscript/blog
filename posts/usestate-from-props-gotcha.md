@@ -12,8 +12,8 @@ Below, I show a naive example of that component.
 _Note: You will see code that might not be production ready._
 
     //Countdown.js
-    export default function Countdown({ countdownMs }) {
-      const [timeLeft, setTimeLeft] = useState(countdownMs);
+    export default function Countdown({ countdownMs }) { // countdownMs is undefined first time, later 60000 (1 minute)
+      const [timeLeft, setTimeLeft] = useState(countdownMs); 
 
       useEffect(() => {
         const intervalId = setInterval(() => {
@@ -34,10 +34,10 @@ _Note: You will see code that might not be production ready._
 
 ### The problem
 As you can see I was using `countdownMs` as the param for useState. Because it had to wait for the api response to
-resolve, the first time the value of the prop was `undefined`.  
+resolve, the value of the prop was `undefined`.  
 Few moments later the "real value" was received, lets say 60000ms (1 minute).  
-At this moment I expected the countdown to show the update value, but this didn't happen.
-See if you spot why.  
+At this point I expected the countdown to show 1 minute, but this didn't happen.  
+See if you can spot why.  
 .  
 .  
 .  
