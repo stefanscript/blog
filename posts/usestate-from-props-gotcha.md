@@ -37,7 +37,7 @@ As you can see I was using `countdownMs` as the param for useState. Because it h
 resolve, the value of the prop was `undefined`.  
 Few moments later the "real value" was received, lets say 60000ms (1 minute).  
 At this point I expected the countdown to show 1 minute, but this didn't happen.  
-See if you spot why.  
+See if you can spot why.  
 .  
 .  
 .  
