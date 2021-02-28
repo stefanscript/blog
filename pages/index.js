@@ -14,8 +14,8 @@ export default function Home({ allPosts }) {
       <section className={utilStyles.headingMd}>
         <p>
           Hey I&rsquo;m Stefan, a software engineer. <br />I started exploring
-          the world of software at a young age. It was then when I discover you
-          can get more resources in games by tweaking a few files :D. O yes, I
+          the world of software at a young age. It was then, when I discover you
+          can get more resources, in games, by tweaking a few files :D. O yes, I
           thought, this is big.
         </p>
         <p>
