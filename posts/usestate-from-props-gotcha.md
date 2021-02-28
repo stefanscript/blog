@@ -12,7 +12,7 @@ Below, I show a naive example of that component.
 _Note: You will see code that might not be production ready._
 
     //Countdown.js
-    export default function Countdown({ countdownMs }) { // countdownMs is undefined first time, later 1 minute
+    export default function Countdown({ countdownMs }) { // countdownMs is undefined first time, later 60000 (1 minute)
       const [timeLeft, setTimeLeft] = useState(countdownMs); 
 
       useEffect(() => {
