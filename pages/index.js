@@ -14,13 +14,12 @@ export default function Home({ allPosts }) {
       <section className={utilStyles.headingMd}>
         <p>
           Hey I&rsquo;m Stefan, a software engineer. <br />I started exploring
-          the world of software at a young age. It was then, when I discover you
-          can get more resources, in games, by tweaking a few files :D. O yes, I
-          thought, this is big.
+          the world of software at a young age. It was then, whilst I was playing PC games, that I realised that if you tweak
+          a few files you can get some different outcomes.
+          I thought, this is big.
         </p>
         <p>
-          Next, I started to build my own websites with games that had google
-          ads. It must have been 2000s, just before jQuery.
+          Next, I started to build my own websites with mini games.
         </p>
           <p>It was this experience that got me my first junior developer job.</p>
         <p>This is my blog with posts from my experience.</p>
