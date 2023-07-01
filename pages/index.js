@@ -14,14 +14,12 @@ export default function Home({ allPosts }) {
       <section className={utilStyles.headingMd}>
         <p>
           Hey I&rsquo;m Stefan, a software engineer. <br />I started exploring
-          the world of software at a young age. It was then, whilst I was playing PC games, that I realised that if you tweak
-          a few files you can get some different outcomes.
-          I thought, this is big.
+          the world of software at a young age. It was then, whilst I was
+          playing PC games, that I realised that if you tweak a few files you
+          can get some different outcomes. I thought, this is big.
         </p>
-        <p>
-          Next, I started to build my own websites with mini games.
-        </p>
-          <p>It was this experience that got me my first junior developer job.</p>
+        <p>Next, I started to build my own websites with mini games.</p>
+        <p>It was this experience that got me my first junior developer job.</p>
         <p>This is my blog with posts from my experience.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -29,9 +27,7 @@ export default function Home({ allPosts }) {
         <ul className={utilStyles.list}>
           {allPosts.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                {title}
-              </Link>
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
                 <Date dateString={date} />

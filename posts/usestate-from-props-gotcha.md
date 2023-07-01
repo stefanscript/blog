@@ -13,7 +13,7 @@ _Note: You will see code that might not be production ready._
 
     //Countdown.js
     export default function Countdown({ countdownMs }) { // countdownMs is undefined first time, later 60000 (1 minute)
-      const [timeLeft, setTimeLeft] = useState(countdownMs); 
+      const [timeLeft, setTimeLeft] = useState(countdownMs);
 
       useEffect(() => {
         const intervalId = setInterval(() => {
@@ -33,6 +33,7 @@ _Note: You will see code that might not be production ready._
     ...
 
 ### The problem
+
 As you can see I was using `countdownMs` as the param for useState. Because it had to wait for the api response to
 resolve, the value of the prop was `undefined`.  
 Few moments later the "real value" was received, lets say 60000ms (1 minute).  
@@ -43,7 +44,6 @@ See if you can spot why.
 .  
 .  
 .  
-.    
 .  
 .  
 .  
@@ -58,18 +58,19 @@ See if you can spot why.
 .  
 .  
 .  
-After a few moments I realised my mistake: I overlooked how useState really works.   
-useState brings state variables to functional components. You initialise a variable (e.g. `timeLeft`) with a value and 
-React "remembers" this value between re-renders.   
-Once initialised you can update the variable with the provided "setState" function (`setTimeLeft`).   
-In this case, a new prop for `countdownMs` will not reinitialise `timeLeft`.   
+.  
+After a few moments I realised my mistake: I overlooked how useState really works.  
+useState brings state variables to functional components. You initialise a variable (e.g. `timeLeft`) with a value and
+React "remembers" this value between re-renders.  
+Once initialised you can update the variable with the provided "setState" function (`setTimeLeft`).  
+In this case, a new prop for `countdownMs` will not reinitialise `timeLeft`.
 
-One way to fix this is to use another useEffect: 
+One way to fix this is to use another useEffect:
 
     //Countdown.js
     export default function Countdown({ countdownMs }) {
       const [timeLeft, setTimeLeft] = useState(countdownMs);
-      
+
       useEffect(() => {
         const intervalId = setInterval(() => {
           setTimeLeft((prevTimeLeft) => prevTimeLeft - ONE_SECOND);
@@ -78,11 +79,11 @@ One way to fix this is to use another useEffect:
           clearInterval(intervalId);
         };
       }, []);
-      
+
       useEffect(() => {
         setTimeLeft(countdownMs);
       }, [countdownMs]);
-      
+
       return (
         <ul className={"countdown"}>
           ...

@@ -4,9 +4,9 @@ date: "2021-01-14"
 author: stefan
 ---
 
-I needed to create a very simple solution for sorting a list of items. 
+I needed to create a very simple solution for sorting a list of items.
 
-#### I started with a list, each element having it's own id 
+#### I started with a list, each element having it's own id
 
     <ul class="simple-sortable">
         <li data-id="1">1 Bob</li>
@@ -16,31 +16,35 @@ I needed to create a very simple solution for sorting a list of items.
     </ul>
 
 #### Next I had a look at the [Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
-Here I discovered the events that I could use for my simple example: *dragstart, dragenter and dragend*.
-In order to use these events, I needed to set `draggable` on each of the list items. 
+
+Here I discovered the events that I could use for my simple example: _dragstart, dragenter and dragend_.
+In order to use these events, I needed to set `draggable` on each of the list items.
 I decided to set the attribute using javascript:
 
     item.setAttribute("draggable", true);
-    
+
 #### dragstart
+
     item.addEventListener("dragstart", (e) => {
         dragged = e.target;
     })
+
 When this event fires you know that `e.target` is the element that is being dragged.
 
-
-    
 #### dragenter
+
     item.addEventListener("dragenter", (e) => {
         if (dragged !== e.target) {
             target = e.target;
         }
     })
-`dragenter` fires when you touch elements of the list. 
-`e.target` is the element that is being touched by your dragged 
+
+`dragenter` fires when you touch elements of the list.
+`e.target` is the element that is being touched by your dragged
 element.
 
 #### dragend
+
     item.addEventListener("dragend", (e) => {
         if (target) {
             if (draggedY < target.getBoundingClientRect().y) {
@@ -52,14 +56,14 @@ element.
             }
         }
     })
-Finally on dragend you can start to rearrange the elements that are affected by the new order
- 
 
+Finally on dragend you can start to rearrange the elements that are affected by the new order
 
 #### All together now
+
 ![Simple sortable 1.0](/images/simple-sortable1.0.gif)
 
-And the js 
+And the js
 
     function SimpleSortable(newOrderHandler) {
         window.addEventListener("load", () => {
@@ -75,13 +79,13 @@ And the js
                     draggedY = dragged.getBoundingClientRect().y;
                     dragged.style.border = "1px solid #000";
                 });
-                
+
                 item.addEventListener("dragenter", (e) => {
                     if (dragged !== e.target) {
                         target = e.target;
                     }
                 });
-                
+
                 item.addEventListener("dragend", (e) => {
                     e.preventDefault();
                     if (target) {
@@ -93,9 +97,9 @@ And the js
                             target.before(dragged);
                         }
                     }
-                    
+
                     dragged.style.border = "0";
-                    
+
                     let newOrder = [];
                     document.querySelectorAll(selectorItems).forEach(a => {
                         newOrder.push(a.dataset.id);
